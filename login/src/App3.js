@@ -3,19 +3,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
 
-function App() {
+function App3() {
     return (
         <Router>
             <Routes>
-                <Route path="/signup">
-                    <SignupPage />
-                </Route>
-                <Route path="/">
-                    <LoginPage />
-                </Route>
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/" element={<LoginPage />} />
             </Routes>
         </Router>
     );
 }
 
-export default App;
+export default App3;
