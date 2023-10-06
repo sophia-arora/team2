@@ -3,6 +3,8 @@ import './LoginPage.css';
 import {Link} from "react-router-dom";
 
 function LoginPage() {
+    var user;
+    var password;
 
   //   const [formData, setFormData] = useState({
   //   username: '',
@@ -13,6 +15,8 @@ function LoginPage() {
     function handleSubmit() {
         var u = document.getElementById("username").value;
         var p = document.getElementById("password").value;
+        user=u;
+        password= p;
         document.getElementById("demo").innerHTML = "Username: "+u+"Password:  " +p; //prints out u and p
 
          //

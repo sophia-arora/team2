@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+    <!-- You can include any CSS files or stylesheets here -->
+    <style>
+        .login-container {
+    display: flex;
+    height: 100vh;
+}
+
+.photo-section {
+    flex: 1;
+    background: url('grey.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.form-section {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+}
+
+.button-group button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.button-group span {
+    cursor: pointer;
+    color: #007BFF;
+}
+    </style>
+
+</head>
+<body>
+    <div class="login-container">
+        <div class="photo-section">
+            <!-- You can add an <img> tag here for the photo -->
+        </div>
+        <div class="form-section">
+            <h1>Welcome</h1>
+            <p>Create an account</p>
+            <div class="input-group">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" placeholder="Enter your first name" />
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" placeholder="Enter your last name" />
+            </div>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" />
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" />
+            </div>
+            <div class="button-group">
+                <button id="signup-button">Sign Up</button>
+            </div>
+            <p id="demo"></p>
+        </div>
+    </div>
+
+    <!-- You can include any JavaScript files or scripts here if needed -->
+    <script>
+        document.getElementById("signup-button").addEventListener("click", function() {
+            var u = document.getElementById("username").value;
+            var p = document.getElementById("password").value;
+            var f = document.getElementById("firstname").value;
+            var l = document.getElementById("lastname").value;
+            document.getElementById("demo").innerHTML = "Username: " + u + " Password: " + p + " First: " + f + " Last: " + l; //prints out u and p
+        });
+    </script>
+</body>
+</html>
