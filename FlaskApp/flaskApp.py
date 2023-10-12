@@ -9,10 +9,10 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route('/')
 def index():
 
-    # Render the login page
+    # Render the ReactApp page
     return app.send_static_file('index.html')
 
-    # return render_template('login.html')
+    # return render_template('ReactApp.html')
 @app.route('/getPassword/<username>')
 @cross_origin()
 def hello_world(username):
