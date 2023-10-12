@@ -1,10 +1,12 @@
 from flask import Flask, render_template
 
-app = Flask(__name__, template_folder='templates')
-
+# app = Flask(__name__, template_folder='templates')
+app = Flask(__name__)
 @app.route('/')
 def login():
-    # Your login logic here
+
+    # Render the login page
+
     return render_template('login.html')
 
 @app.route('/signup')
