@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import './LoginPage.css';
-import {Link} from "react-router-dom";
+import {BrowserRouter, Link} from "react-router-dom";
 
 
+export default function LoginPage() {
 const [username, setUsername] = useState(''); //input
 const [password, setPassword] = useState('');   //input
  const [rpassword, setRpassword] = useState(''); //backend
@@ -34,7 +35,7 @@ The backend only accepts one input in any other case it returns a 404 with a cus
 in case of a 200 we set seterror as false
 
 */
-export default function Form() {
+
 const handleSubmit = (e) => {
 	e.preventDefault();
 	if (username === '' ) {
@@ -44,20 +45,36 @@ const handleSubmit = (e) => {
   var fetchURL="/getPassword/" + username
   fetch(fetchURL)
 
-  .then((response) => response.text())
+  .then((response) => {
+      if(response.status === 200){
+          return response.json();
+          //response.text()
+      }else{
+          console.error("non json"+response.status);
+          return response.text();
+          //throw new Error("Non-JSON response");
+      }
+
+  })
   //.then((data) => console.log(data))
   .then(function(data){
-    data=JSON.parse(data);
+    //data=JSON.parse(data);
+      if(typeof data ==='string'){
+          console.log("non json data", data);
+      }else {
 
-    if(data.code===200)
-    {
-    setRpassword(data.name)
-    setError(false);
-    }
-    else{
+          if (data.code === 200) {
+              setRpassword(data.name)
+              setError(false);
+          } else {
+              setError(true);
+              setRpassword("response code: " + data.code + " and message received: " + data.error);
+          }
+      }
+  })
+  .catch(function (error){
       setError(true);
-      setRpassword("response code: " + data.code + " and message recieved: " + data.error);
-    }
+      setRpassword("error: "+error.message);
   });
 
 	}
@@ -138,7 +155,9 @@ const errorMessage = () => {
                 </div>
                 <div className="button-group">
                     <button onClick={handleSubmit}>Login</button>
-                    <Link to="/signup">Don't have an account?'</Link>
+                    <BrowserRouter>
+                        <Link to="/signup">Don't have an account?'</Link>
+                    </BrowserRouter>
                 </div>
                 {/*<p id="demo"></p>*/}
                 <div className="messages">

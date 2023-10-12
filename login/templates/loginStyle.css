@@ -5,7 +5,7 @@
 
 .photo-section {
     flex: 1;
-    background: url('../src/grey.jpg') no-repeat center center;
+    background: url('grey.jpg') no-repeat center center;
     background-size: cover;
 }
 
